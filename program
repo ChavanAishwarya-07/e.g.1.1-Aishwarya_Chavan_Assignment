@@ -1,0 +1,44 @@
+import java.util.*;
+public class DemoMain 
+{
+    public static void main(String args[])
+    {
+        int n = 3; //no of shipments
+        int [] shipments ={10,20,30};//units to be dlivered in container
+        
+        int m =4; //no of container
+        int [] container_limits = {15,15,20,10}; //each container capacity
+        
+        int totalunit =0;//total unit in shipment
+        for(int i = 0;i < n ; i++)
+        {
+            totalunit += shipments[i];//cal total units in shipments
+        }
+        
+        int totalspace=0;// total container capacity
+        for(int j=0;j<m;j++)
+        {
+            totalspace += container_limits[j];//cal total capacity
+        }
+        
+        if(totalspace < totalunit)
+        {
+            System.out.println("Not enough space in Container to ship the units" + -1);
+            return;
+        }
+        
+        int container_used=0;
+        int sum =0;// initially units placed in container is 0
+        for(int j=0;j<m;j++)
+        {
+            sum += container_limits[j];//adding container capacity to sum
+            container_used++;
+        }
+        if(sum >= totalunit)
+        {
+            System.out.println("Minimum number of container needed are " +container_used);
+            System.out.println("Total number of units of shipments placed in container "+sum);
+           
+        }
+    }
+}
